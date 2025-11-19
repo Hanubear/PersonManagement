@@ -1,6 +1,11 @@
 public class PersonManagement {
+    public int id;
+    public String name;
 
-    public void createPerson() {
-
+    public PersonManagement(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
+
+
 }

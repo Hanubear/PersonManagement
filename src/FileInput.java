@@ -4,12 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class FileInput {
-    public String personList;
-
     public String[] dataFill;
+
     public HashMap<String, Person> personHashMap = new HashMap<>();
-
-
     public void importPersons() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/persons.csv"));
@@ -25,6 +22,7 @@ public class FileInput {
         }
     }
 
+    public HashMap<String, Address> addressHashMap = new HashMap<>();
     public void importAddresses() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/addresses.csv"));
@@ -40,6 +38,7 @@ public class FileInput {
         }
     }
 
+    public HashMap<String, PersonManagement> personManagementHashMap = new HashMap<>();
     public void importPersonManagements() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/personManagements.csv"));

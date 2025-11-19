@@ -1,13 +1,14 @@
 public class Address {
+    public int streetId;
     public String street;
-    public int houseNumber;
     public String city;
-    public int zipCode;
+    public int zip;
 
-    public Address(String street, int houseNumber, String city, int zipCode) {
+    //"id","street","zip","city"
+    public Address(int streetId, String street, int zip, String city) {
+        this.streetId = streetId;
         this.street = street;
-        this.houseNumber = houseNumber;
+        this.zip = zip;
         this.city = city;
-        this.zipCode = zipCode;
     }
 }
