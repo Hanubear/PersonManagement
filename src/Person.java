@@ -1,24 +1,21 @@
 public class Person {
-    String firstName;
-    String lastName;
-    String dateOfBirth;
-    String address;
-    Enum<Gender> gender;
+    public String firstName;
+    public String lastName;
+    public String dateOfBirth;
+    public Enum<Gender> gender;
+    public Address address;
 
     public Person(String firstName,
                   String lastName,
                   String dateOfBirth,
-                  String address,
-                  Enum<Gender> gender) {
+                  Enum<Gender> gender,
+                  Address address
+                  ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.address = address;
         this.gender = gender;
-    }
-
-    public void createPerson() {
-
+        this.address = address;
     }
 
 }
