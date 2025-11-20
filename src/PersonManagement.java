@@ -7,6 +7,10 @@ public class PersonManagement {
         this.name = name;
     }
 
+    public PersonManagement getPersonManagement(String personMgmtId){
+        FileInput fileInput = new FileInput();
+        return fileInput.personManagementHashMap.get(personMgmtId);
+    }
     /*
     Get PERSOMNMGT Method
      */

@@ -5,7 +5,7 @@ public class Person {
     public String dateOfBirth;
     public Address address;
     public Enum<Gender> gender;
-    public int personManagementId;
+    public PersonManagement personManagement;
 
     //"id","firstname","lastname","date of birth","addressId","gender","personManagementId"
     public Person(int id,
@@ -14,7 +14,7 @@ public class Person {
                   String dateOfBirth,
                   Address address,
                   Enum<Gender> gender,
-                  int personManagementId
+                  PersonManagement personManagement
     ) {
         this.id = id;
         this.firstName = firstName;
@@ -22,7 +22,7 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.gender = gender;
-        this.personManagementId = personManagementId;
+        this.personManagement = personManagement;
     }
 
     public Person createPersonFromFile(String[] personData) {
