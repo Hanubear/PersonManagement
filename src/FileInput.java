@@ -7,6 +7,7 @@ public class FileInput {
     public String[] dataFill;
 
     public HashMap<Integer, Address> addressHashMap = new HashMap<>();
+
     public void importAddresses() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/addresses.csv"));
@@ -23,6 +24,7 @@ public class FileInput {
     }
 
     public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
+
     public void importPersonManagements() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/personManagements.csv"));
@@ -39,6 +41,8 @@ public class FileInput {
     }
 
     public HashMap<Integer, Person> personHashMap = new HashMap<>();
+    Person person;
+
     public void importPersons() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/persons.csv"));
@@ -46,8 +50,7 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(";");
-
-                //createPersonFromFile(dataFill);
+                personHashMap.put(Integer.valueOf(dataFill[0]), person.createPersonFromFile(dataFill));
             }
             reader.close();
         } catch (IOException e) {
