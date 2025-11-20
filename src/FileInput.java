@@ -6,23 +6,7 @@ import java.util.HashMap;
 public class FileInput {
     public String[] dataFill;
 
-    public HashMap<String, Person> personHashMap = new HashMap<>();
-    public void importPersons() {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("data/persons.csv"));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.isBlank()) continue;
-                dataFill = line.split(";");
-
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public HashMap<String, Address> addressHashMap = new HashMap<>();
+    public HashMap<Integer, Address> addressHashMap = new HashMap<>();
     public void importAddresses() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/addresses.csv"));
@@ -38,7 +22,7 @@ public class FileInput {
         }
     }
 
-    public HashMap<String, PersonManagement> personManagementHashMap = new HashMap<>();
+    public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
     public void importPersonManagements() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/personManagements.csv"));
@@ -54,4 +38,20 @@ public class FileInput {
         }
     }
 
+    public HashMap<Integer, Person> personHashMap = new HashMap<>();
+    public void importPersons() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("data/persons.csv"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.isBlank()) continue;
+                dataFill = line.split(";");
+
+                //createPersonFromFile(dataFill);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

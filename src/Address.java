@@ -11,4 +11,12 @@ public class Address {
         this.zip = zip;
         this.city = city;
     }
+
+    public Address getAddressAsString(String addressId){
+        FileInput fileInput = new FileInput();
+        return fileInput.addressHashMap.get(addressId);
+    }
+    /*
+    Get ADDRESS method
+     */
 }
