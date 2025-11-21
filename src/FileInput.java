@@ -6,16 +6,17 @@ import java.util.HashMap;
 public class FileInput {
     public String[] dataFill;
 
-    public HashMap<Integer, Address> addressHashMap = new HashMap<>();
+    public static HashMap<String, Address> addressHashMap = new HashMap<>();
 
     public void importAddresses() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/addresses.csv"));
             String line;
+            reader.readLine(); // Skip header line
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
-                dataFill = line.split(";");
-
+                dataFill = line.split(",");
+                addressHashMap.put(dataFill[0], new Address(dataFill[0], dataFill[1], dataFill[2], dataFill[3]));
             }
             reader.close();
         } catch (IOException e) {
@@ -23,16 +24,17 @@ public class FileInput {
         }
     }
 
-    public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
+    public static HashMap<String, PersonManagement> personManagementHashMap = new HashMap<>();
 
     public void importPersonManagements() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/personManagements.csv"));
             String line;
+            reader.readLine(); // Skip header line
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
-                dataFill = line.split(";");
-
+                dataFill = line.split(",");
+                personManagementHashMap.put(dataFill[0], new PersonManagement(dataFill[0], dataFill[1]));
             }
             reader.close();
         } catch (IOException e) {
@@ -40,17 +42,18 @@ public class FileInput {
         }
     }
 
-    public HashMap<Integer, Person> personHashMap = new HashMap<>();
-    Person person;
+    public HashMap<String, Person> personHashMap = new HashMap<>();
 
     public void importPersons() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/persons.csv"));
             String line;
+            reader.readLine(); // Skip header line
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
-                dataFill = line.split(";");
-                personHashMap.put(Integer.valueOf(dataFill[0]), person.createPersonFromFile(dataFill));
+                dataFill = line.split(",");
+//                personHashMap.put(dataFill[0], person.createPersonFromFile(dataFill));
+                personHashMap.put(dataFill[0], new Person(dataFill[0], dataFill[1], dataFill[2], dataFill[3], dataFill[4], dataFill[5], dataFill[6]));
             }
             reader.close();
         } catch (IOException e) {
