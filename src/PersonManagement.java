@@ -7,7 +7,11 @@ public class PersonManagement {
         this.name = name;
     }
 
-    public PersonManagement getPersonManagement(String personMgmtId){
+    public PersonManagement createPersonmanagement(String[] personMgmt) {
+        return new PersonManagement(Integer.parseInt(personMgmt[0]), personMgmt[1]);
+    }
+
+    public PersonManagement getPersonManagement(String personMgmtId) {
         FileInput fileInput = new FileInput();
         return fileInput.personManagementHashMap.get(personMgmtId);
     }

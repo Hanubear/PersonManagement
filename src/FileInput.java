@@ -7,6 +7,7 @@ public class FileInput {
     public String[] dataFill;
 
     public HashMap<Integer, Address> addressHashMap = new HashMap<>();
+    Address address;
 
     public void importAddresses() {
         try {
@@ -15,7 +16,7 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(";");
-
+                addressHashMap.put(Integer.parseInt(dataFill[0]), address.createAddress(dataFill));
             }
             reader.close();
         } catch (IOException e) {
@@ -24,6 +25,7 @@ public class FileInput {
     }
 
     public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
+    PersonManagement personManagement;
 
     public void importPersonManagements() {
         try {
@@ -32,7 +34,7 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(";");
-
+                personManagementHashMap.put(Integer.parseInt(dataFill[0]), personManagement.createPersonmanagement(dataFill));
             }
             reader.close();
         } catch (IOException e) {
@@ -50,7 +52,7 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(";");
-                personHashMap.put(Integer.valueOf(dataFill[0]), person.createPersonFromFile(dataFill));
+                personHashMap.put(Integer.parseInt(dataFill[0]), person.createPersonFromFile(dataFill));
             }
             reader.close();
         } catch (IOException e) {

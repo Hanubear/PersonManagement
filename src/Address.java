@@ -12,7 +12,11 @@ public class Address {
         this.city = city;
     }
 
-    public Address getAddressAsString(String addressId){
+    public Address createAddress(String[] addressData) {
+        return new Address(Integer.parseInt(addressData[0]), addressData[1], Integer.parseInt(addressData[2]),addressData[3]);
+    }
+
+    public Address getAddressAsString(String addressId) {
         FileInput fileInput = new FileInput();
         return fileInput.addressHashMap.get(addressId);
     }
