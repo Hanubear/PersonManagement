@@ -33,7 +33,7 @@ public class Person {
                 personData[3],
                 address.getAddressAsString(personData[5]),
                 getGender(personData[4]),
-                Integer.parseInt(personData[6])
+                personManagement.getPersonManagement(personData[6])
         );
     }
 

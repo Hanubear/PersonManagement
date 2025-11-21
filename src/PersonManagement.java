@@ -11,8 +11,5 @@ public class PersonManagement {
         FileInput fileInput = new FileInput();
         return fileInput.personManagementHashMap.get(personMgmtId);
     }
-    /*
-    Get PERSOMNMGT Method
-     */
 
 }

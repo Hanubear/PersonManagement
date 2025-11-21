@@ -16,7 +16,5 @@ public class Address {
         FileInput fileInput = new FileInput();
         return fileInput.addressHashMap.get(addressId);
     }
-    /*
-    Get ADDRESS method
-     */
+
 }
