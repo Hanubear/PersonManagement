@@ -13,13 +13,13 @@ public class Address {
         this.zip = zip;
         this.city = city;
     }
-
-    public static String getAddressAsString(String addressId) {
+    DataManagement dataManagement;
+    public String getAddressAsString(String addressId) {
         StringJoiner sj = new StringJoiner(", ", " ", " ");
         String address;
-        sj.add(FileInput.addressHashMap.get(addressId).street);
-        sj.add(FileInput.addressHashMap.get(addressId).city);
-        sj.add(FileInput.addressHashMap.get(addressId).zip);
+        sj.add(dataManagement.addressHashMap.get(addressId).street);
+        sj.add(dataManagement.addressHashMap.get(addressId).city);
+        sj.add(dataManagement.addressHashMap.get(addressId).zip);
         address = String.valueOf(sj);
 
         return address;

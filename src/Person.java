@@ -1,6 +1,9 @@
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Person {
+//    public HashMap<String, Person> personHashMap = new HashMap<>();
+
     public String id;
     public String firstName;
     public String lastName;
@@ -27,15 +30,17 @@ public class Person {
         this.personManagement = personManagement;
     }
 
+    Address addressInstance;
+    PersonMgmt personMgmt;
     public Person createPersonFromFile(String[] data) {
         return new Person(
                 data[0],
                 data[1],
                 data[2],
                 data[3],
-                Address.getAddressAsString(data[4]),
+                addressInstance.getAddressAsString(data[4]),
                 getGender(data[5]),
-                PersonManagement.getPersonManagement(data[6])
+                personMgmt.getPersonManagement(data[6])
         );
     }
 
