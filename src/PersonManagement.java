@@ -8,9 +8,9 @@ public class PersonManagement {
     }
 
     public static String getPersonManagement(String personMgmtId) {
-        String persoMgmgt = "";
-        persoMgmgt = FileInput.personManagementHashMap.get(personMgmtId).name;
-        return persoMgmgt;
+        String personMgmt = "";
+        personMgmt = FileInput.personManagementHashMap.get(personMgmtId).name;
+        return personMgmt;
     }
 
 }

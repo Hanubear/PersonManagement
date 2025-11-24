@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Person {
     public String id;
     public String firstName;
@@ -28,14 +30,14 @@ public class Person {
 
     private Enum getGender(String gender) {
         try {
-            switch (gender) {
-                case "Male" -> {
+            switch (gender.toLowerCase(Locale.ROOT)) {
+                case "male" -> {
                     return Gender.MALE;
                 }
-                case "Female" -> {
+                case "female" -> {
                     return Gender.FEMALE;
                 }
-                case "Div" -> {
+                case "div" -> {
                     return Gender.DIVERS;
                 }
             }
