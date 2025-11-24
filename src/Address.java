@@ -15,7 +15,7 @@ public class Address {
     }
 
     public static String getAddressAsString(String addressId) {
-        StringJoiner sj = new StringJoiner(" ", "", "");
+        StringJoiner sj = new StringJoiner(", ", " ", " ");
         String address;
         sj.add(FileInput.addressHashMap.get(addressId).street);
         sj.add(FileInput.addressHashMap.get(addressId).city);

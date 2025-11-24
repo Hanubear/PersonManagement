@@ -14,19 +14,30 @@ public class Person {
                   String firstName,
                   String lastName,
                   String dateOfBirth,
-                  String addressId,
-                  String gender,
-                  String personManagementId
+                  String address,
+                  Enum gender,
+                  String personManagement
     ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.address = Address.getAddressAsString(addressId);
-        this.gender = getGender(gender);
-        this.personManagement = PersonManagement.getPersonManagement(personManagementId);
+        this.address = address;
+        this.gender = gender;
+        this.personManagement = personManagement;
     }
 
+    public Person createPersonFromFile(String[] data) {
+        return new Person(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                Address.getAddressAsString(data[4]),
+                getGender(data[5]),
+                PersonManagement.getPersonManagement(data[6])
+        );
+    }
 
     private Enum getGender(String gender) {
         try {
