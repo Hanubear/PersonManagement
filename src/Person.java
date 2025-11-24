@@ -2,8 +2,6 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class Person {
-//    public HashMap<String, Person> personHashMap = new HashMap<>();
-
     public String id;
     public String firstName;
     public String lastName;
