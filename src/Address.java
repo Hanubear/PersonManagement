@@ -13,8 +13,9 @@ public class Address {
         this.zip = zip;
         this.city = city;
     }
-    DataManagement dataManagement;
-    public String getAddressAsString(String addressId) {
+
+    static DataManagement dataManagement = new DataManagement();
+    public static String getAddressAsString(String addressId) {
         StringJoiner sj = new StringJoiner(", ", " ", " ");
         String address;
         sj.add(dataManagement.addressHashMap.get(addressId).street);

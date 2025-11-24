@@ -28,21 +28,19 @@ public class Person {
         this.personManagement = personManagement;
     }
 
-    Address addressInstance;
-    PersonMgmt personMgmt;
-    public Person createPersonFromFile(String[] data) {
+    public static Person createPersonFromFile(String[] data) {
         return new Person(
                 data[0],
                 data[1],
                 data[2],
                 data[3],
-                addressInstance.getAddressAsString(data[4]),
+                Address.getAddressAsString(data[4]),
                 getGender(data[5]),
-                personMgmt.getPersonManagement(data[6])
+                PersonMgmt.getPersonManagement(data[6])
         );
     }
 
-    private Enum getGender(String gender) {
+    private static Enum getGender(String gender) {
         try {
             switch (gender.toLowerCase(Locale.ROOT)) {
                 case "male" -> {

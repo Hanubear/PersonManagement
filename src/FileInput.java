@@ -6,7 +6,6 @@ public class FileInput {
     DataManagement dataManagement = new DataManagement();
     public String[] dataFill;
 
-
     public void importAddresses() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/addresses.csv"));
@@ -41,7 +40,6 @@ public class FileInput {
         }
     }
 
-    Person person;
     public void importPersons() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/persons.csv"));
@@ -50,7 +48,7 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
-                dataManagement.personHashMap.put(dataFill[0], person.createPersonFromFile(dataFill));
+                dataManagement.personList.add(Person.createPersonFromFile(dataFill));
             }
             reader.close();
         } catch (IOException e) {
