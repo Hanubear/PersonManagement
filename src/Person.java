@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Locale;
 
 public class Person {
@@ -14,21 +15,58 @@ public class Person {
                   String firstName,
                   String lastName,
                   String dateOfBirth,
-                  String addressId,
-                  String gender,
-                  String personManagementId
+                  String address,
+                  Enum gender,
+                  String personManagement
     ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.address = Address.getAddressAsString(addressId);
-        this.gender = getGender(gender);
-        this.personManagement = PersonManagement.getPersonManagement(personManagementId);
+        this.address = address;
+        this.gender = gender;
+        this.personManagement = personManagement;
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-    private Enum getGender(String gender) {
+    public Person(String firstName, String lastName, String dateOfBirth, Enum gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+    }
+
+    public Person(String firstName, String lastName, String dateOfBirth, String address, Enum gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.gender = gender;
+    }
+
+    public static Person createPersonFromFile(String[] data) {
+        return new Person(
+                data[0],
+                data[1],
+                data[2],
+                data[3],
+                Address.getAddressAsString(data[4]),
+                getGender(data[5]),
+                PersonMgmt.getPersonManagement(data[6])
+        );
+    }
+
+    public static Person createPerson (){
+
+        Person person = new Person();
+        return person;
+    }
+
+    private static Enum getGender(String gender) {
         try {
             switch (gender.toLowerCase(Locale.ROOT)) {
                 case "male" -> {

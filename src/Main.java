@@ -5,6 +5,8 @@ public class Main {
         fileInput.importPersonManagements();
         fileInput.importPersons();
 
+        Runnable runnable = new Runnable();
+        runnable.startRunnable();
 
     }
 }
