@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 public class PersonMgmt {
     static DataManagement dataManagement = new DataManagement();
 
@@ -11,7 +9,7 @@ public class PersonMgmt {
 
     public void createPersonManagement(String key, String name) {
         if (dataManagement.personManagementHashMap.containsKey(key))
-            throw new PersonManagementKeyAlreadyExiststException();
+            throw new HashMapKeyAlreadyExistsException();
 
         dataManagement.personManagementHashMap.put(key, name);
     }

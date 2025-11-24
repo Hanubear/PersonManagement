@@ -28,6 +28,18 @@ public class Person {
         this.personManagement = personManagement;
     }
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Person(String firstName, String lastName, String dateOfBirth, Enum gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+    }
+
     public static Person createPersonFromFile(String[] data) {
         return new Person(
                 data[0],
@@ -38,6 +50,11 @@ public class Person {
                 getGender(data[5]),
                 PersonMgmt.getPersonManagement(data[6])
         );
+    }
+
+    public static Person createPerson (){
+        Person person = new Person();
+        return person;
     }
 
     private static Enum getGender(String gender) {
