@@ -16,48 +16,67 @@ public class UserInteraction implements DateMatcher {
     public ArrayList<String> scannerPersonData() {
         ArrayList<String> data = new ArrayList<>();
         String input;
+        boolean success = false;
 
-        try {
-            System.out.println("enter Firstname: ");
-            input = scanner.nextLine();
-            if (!input.matches(NAME_REGEX)) throw new InvalidPersonNameException();
-            data.add(input);
-        } catch (InvalidPersonNameException e) {
-            e.printStackTrace();
-            System.out.println("Illegal characters used");
-        }
+        do {
+            try {
+                System.out.println("enter Firstname: ");
+                input = scanner.nextLine();
+                if (!input.matches(NAME_REGEX)) throw new InvalidPersonNameException();
+                data.add(input);
+                success = true;
+            } catch (InvalidPersonNameException e) {
+                e.printStackTrace();
+                System.out.println("Illegal characters used");
+            }
+        } while (!success);
 
-        try {
-            System.out.println("enter Lastname: ");
-            input = scanner.nextLine();
-            if (!input.matches(NAME_REGEX)) throw new InvalidPersonNameException();
-            data.add(input);
-        } catch (InvalidPersonNameException e) {
-            e.printStackTrace();
-            System.out.println("Illegal characters used");
-        }
+        success = false;
+        do {
+            try {
+                System.out.println("enter Lastname: ");
+                input = scanner.nextLine();
+                if (!input.matches(NAME_REGEX)) throw new InvalidPersonNameException();
+                data.add(input);
+                success = true;
+            } catch (InvalidPersonNameException e) {
+                e.printStackTrace();
+                System.out.println("Illegal characters used");
+            }
+        } while (!success);
 
-        try {
-            System.out.println("enter Date of Birth: ");
-            input = scanner.nextLine();
-            if (!input.matches(String.valueOf(DATE_PATTERN))) throw new InvalidDateException();
-            data.add(input);
-        } catch (InvalidDateException e) {
-            e.printStackTrace();
-            System.out.println("Illegal Date used");
-        }
-
-        try {
-            System.out.println("enter Gender: ");
-            input = scanner.nextLine().toLowerCase(Locale.ROOT);
-            if (!input.matches("male")||!input.matches("female")||!input.matches("\\bdiv\\b")) throw new InvalidPersonNameException();
-            data.add(input);
-        } catch (InvalidPersonNameException e) {
-            e.printStackTrace();
-            System.out.println("Illegal Date used");
-        }
+        success = false;
+        do {
+            try {
+                System.out.println("enter Date of Birth: ");
+                input = scanner.nextLine();
+                if (!input.matches(String.valueOf(DATE_PATTERN))) throw new InvalidDateException();
+                data.add(input);
+                success = true;
+            } catch (InvalidDateException e) {
+                e.printStackTrace();
+                System.out.println("Illegal Date used");
+            }
+        } while (!success);
 
         System.out.println("enter Address: ");
+        input = scanner.nextLine();
+        data.add(input);
+
+        success = false;
+        do {
+            try {
+                System.out.println("enter Gender: ");
+                input = scanner.nextLine().toLowerCase(Locale.ROOT);
+                if (!input.matches("male") || !input.matches("female") || !input.matches("\\bdiv\\b"))
+                    throw new InvalidPersonNameException();
+                data.add(input);
+                success = true;
+            } catch (InvalidPersonNameException e) {
+                e.printStackTrace();
+                System.out.println("Illegal input");
+            }
+        } while (!success);
 
 
         return data;

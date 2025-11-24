@@ -40,6 +40,14 @@ public class Person {
         this.gender = gender;
     }
 
+    public Person(String firstName, String lastName, String dateOfBirth, String address, Enum gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.gender = gender;
+    }
+
     public static Person createPersonFromFile(String[] data) {
         return new Person(
                 data[0],
@@ -53,6 +61,7 @@ public class Person {
     }
 
     public static Person createPerson (){
+
         Person person = new Person();
         return person;
     }
