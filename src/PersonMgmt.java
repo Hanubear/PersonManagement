@@ -2,7 +2,7 @@ public class PersonMgmt {
     static DataManagement dataManagement = new DataManagement();
 
     public static String getPersonManagement(String personMgmtId) {
-        String personMgmt = "";
+        String personMgmt;
         personMgmt = dataManagement.personManagementHashMap.get(personMgmtId);
         return personMgmt;
     }

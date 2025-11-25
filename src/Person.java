@@ -1,7 +1,10 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
 public class Person {
+    static DataManagement dataManagement = new DataManagement();
+
     public String id;
     public String firstName;
     public String lastName;
@@ -28,27 +31,8 @@ public class Person {
         this.personManagement = personManagement;
     }
 
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Person(String firstName, String lastName, String dateOfBirth, Enum gender) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-    }
-
-    public Person(String firstName, String lastName, String dateOfBirth, String address, Enum gender) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.gender = gender;
-    }
-
     public static Person createPersonFromFile(String[] data) {
+        dataManagement.continuousID++;
         return new Person(
                 data[0],
                 data[1],
@@ -60,11 +44,31 @@ public class Person {
         );
     }
 
-    public static Person createPerson (){
-
-        Person person = new Person();
-        return person;
+    /**
+     * String id,
+     * String firstName,
+     * String lastName,
+     * String dateOfBirth,
+     * String address,
+     * Enum gender,
+     * String personManagement
+     *
+     * @param newPersonData
+     * @return person Object
+     */
+    public static Person createPerson(String[] newPersonData, String personMgmt) {
+        dataManagement.continuousID++;
+        return new Person(
+                String.valueOf(dataManagement.continuousID),
+                newPersonData[0],
+                newPersonData[1],
+                newPersonData[2],
+                newPersonData[3],
+                getGender(newPersonData[4]),
+                personMgmt
+        );
     }
+
 
     private static Enum getGender(String gender) {
         try {

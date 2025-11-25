@@ -13,17 +13,17 @@ public class UserInteraction implements DateMatcher {
 
     Scanner scanner = new Scanner(System.in);
 
-    public ArrayList<String> scannerPersonData() {
-        ArrayList<String> data = new ArrayList<>();
+    public String[] scannerPersonData() {
+        String[] personData = new String[5];
         String input;
-        boolean success = false;
 
+        boolean success = false;
         do {
             try {
                 System.out.println("enter Firstname: ");
                 input = scanner.nextLine();
                 if (!input.matches(NAME_REGEX)) throw new InvalidPersonNameException();
-                data.add(input);
+                personData[0] = input;
                 success = true;
             } catch (InvalidPersonNameException e) {
                 e.printStackTrace();
@@ -37,7 +37,7 @@ public class UserInteraction implements DateMatcher {
                 System.out.println("enter Lastname: ");
                 input = scanner.nextLine();
                 if (!input.matches(NAME_REGEX)) throw new InvalidPersonNameException();
-                data.add(input);
+                personData[1] = input;
                 success = true;
             } catch (InvalidPersonNameException e) {
                 e.printStackTrace();
@@ -51,7 +51,7 @@ public class UserInteraction implements DateMatcher {
                 System.out.println("enter Date of Birth: ");
                 input = scanner.nextLine();
                 if (!input.matches(String.valueOf(DATE_PATTERN))) throw new InvalidDateException();
-                data.add(input);
+                personData[2] = input;
                 success = true;
             } catch (InvalidDateException e) {
                 e.printStackTrace();
@@ -61,7 +61,7 @@ public class UserInteraction implements DateMatcher {
 
         System.out.println("enter Address: ");
         input = scanner.nextLine();
-        data.add(input);
+        personData[3] = input;
 
         success = false;
         do {
@@ -70,16 +70,14 @@ public class UserInteraction implements DateMatcher {
                 input = scanner.nextLine().toLowerCase(Locale.ROOT);
                 if (!input.matches("male") || !input.matches("female") || !input.matches("\\bdiv\\b"))
                     throw new InvalidPersonNameException();
-                data.add(input);
+                personData[4] = input;
                 success = true;
             } catch (InvalidPersonNameException e) {
                 e.printStackTrace();
                 System.out.println("Illegal input");
             }
         } while (!success);
-
-
-        return data;
+        return personData;
     }
 
     @Override
