@@ -1,47 +1,57 @@
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
 
 public class Person {
     static DataManagement dataManagement = new DataManagement();
 
-    public String id;
+    public int id;
     public String firstName;
     public String lastName;
     public String dateOfBirth;
-    public String address;
+    public int addressId;
     public Enum gender;
-    public String personManagement;
+    public int personManagementId;
 
     //"id","firstname","lastname","date of birth","addressId","gender","personManagementId"
-    public Person(String id,
+    public Person(int id,
                   String firstName,
                   String lastName,
                   String dateOfBirth,
-                  String address,
+                  int addressId,
                   Enum gender,
-                  String personManagement
+                  int personManagementId
     ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.address = address;
+        this.addressId = addressId;
         this.gender = gender;
-        this.personManagement = personManagement;
+        this.personManagementId = personManagementId;
     }
 
-    public static Person createPersonFromFile(String[] data) {
-        dataManagement.continuousID++;
-        return new Person(
-                data[0],
+    /**
+     * id;
+     * firstName;
+     * lastName;
+     * dateOfBirth;
+     * addressId;
+     * gender;
+     * personManagementId;
+     *
+     * @param data
+     */
+    public static void createPersonFromFile(String[] data) {
+        dataManagement.continuousPersonID++;
+        Person person = new Person(
+                dataManagement.continuousPersonID,
                 data[1],
                 data[2],
                 data[3],
-                Address.getAddressAsString(data[4]),
+                Integer.parseInt(data[4]),
                 getGender(data[5]),
-                PersonMgmt.getPersonManagement(data[6])
+                Integer.parseInt(data[6])
         );
+        dataManagement.personList.add(dataManagement.continuousPersonID, person);
     }
 
     /**
@@ -54,19 +64,20 @@ public class Person {
      * String personManagement
      *
      * @param newPersonData
-     * @return person Object
+     * @param personMgmtId
      */
-    public static Person createPerson(String[] newPersonData, String personMgmt) {
-        dataManagement.continuousID++;
-        return new Person(
-                String.valueOf(dataManagement.continuousID),
+    public static void createPerson(String[] newPersonData, int personMgmtId) {
+        dataManagement.continuousPersonID++;
+        Person person = new Person(
+                dataManagement.continuousPersonID,
                 newPersonData[0],
                 newPersonData[1],
                 newPersonData[2],
-                newPersonData[3],
+                Integer.parseInt(newPersonData[3]),
                 getGender(newPersonData[4]),
-                personMgmt
+                personMgmtId
         );
+        dataManagement.personList.add(dataManagement.continuousPersonID, person);
     }
 
 

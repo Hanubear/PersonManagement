@@ -14,15 +14,13 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
-                dataManagement.addressHashMap.put(dataFill[0], new Address(dataFill[0], dataFill[1], dataFill[2], dataFill[3]));
+                Address.createAddressFromFile((Integer.parseInt(dataFill[0])), dataFill[1], dataFill[2], dataFill[3]);
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-//    public static HashMap<String, String> personManagementHashMap = new HashMap<>();
 
     public void importPersonManagements() {
         try {
@@ -32,7 +30,8 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
-                dataManagement.personManagementHashMap.put(dataFill[0], dataFill[1]);
+                dataManagement.personManagementHashMap.put(Integer.parseInt(dataFill[0]), dataFill[1]);
+                // createNewPersonMgmt();
             }
             reader.close();
         } catch (IOException e) {
@@ -48,7 +47,7 @@ public class FileInput {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
-                dataManagement.personList.add(Person.createPersonFromFile(dataFill));
+                Person.createPersonFromFile(dataFill);
             }
             reader.close();
         } catch (IOException e) {
