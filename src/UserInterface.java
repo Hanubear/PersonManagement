@@ -8,11 +8,27 @@ public class UserInterface {
         while (run){
             userInteraction.printMainMenu();
             select = userInteraction.getMenuSelect();
-//            switch ()
+            switch (select){
+                case "1" -> {
+                    //add Person
 
+                }
+                case "2" -> {
+                    //Print List
+                }
+                case "3" -> {
 
+                }
+                case "4" -> {
+                    //asd
+                }
+                case ":q!" -> {
+                    //close
+                    run = false;
+                }
 
-            run = false;
+            }
+
         }
 
     }

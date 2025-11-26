@@ -30,7 +30,7 @@ public class Address {
     public static void createAddressFromFile(int addressId, String street, String zip, String city) {
         dataManagement.continuousAddressID++;
         Address address = new Address(addressId, street, zip, city);
-        dataManagement.addressHashMap.put(dataManagement.continuousAddressID, address);
+        dataManagement.addressHashMap.put(addressId, address);
     }
 
     public static void createNewAddress(String street, String zip, String city) {

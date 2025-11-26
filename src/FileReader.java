@@ -1,14 +1,13 @@
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
-public class FileInput {
+public class FileReader {
     DataManagement dataManagement = new DataManagement();
     public String[] dataFill;
 
     public void importAddresses() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("data/addresses.csv"));
+            BufferedReader reader = new BufferedReader(new java.io.FileReader("data/addresses.csv"));
             String line;
             reader.readLine(); // Skip header line
             while ((line = reader.readLine()) != null) {
@@ -24,7 +23,7 @@ public class FileInput {
 
     public void importPersonManagements() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("data/personManagements.csv"));
+            BufferedReader reader = new BufferedReader(new java.io.FileReader("data/personManagements.csv"));
             String line;
             reader.readLine(); // Skip header line
             while ((line = reader.readLine()) != null) {
@@ -41,7 +40,7 @@ public class FileInput {
 
     public void importPersons() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("data/persons.csv"));
+            BufferedReader reader = new BufferedReader(new java.io.FileReader("data/persons.csv"));
             String line;
             reader.readLine(); // Skip header line
             while ((line = reader.readLine()) != null) {
