@@ -43,7 +43,7 @@ public class Person {
     public static void createPersonFromFile(String[] data) {
         dataManagement.continuousPersonID++;
         Person person = new Person(
-                dataManagement.continuousPersonID,
+                Integer.parseInt(data[0]),
                 data[1],
                 data[2],
                 data[3],
@@ -51,7 +51,7 @@ public class Person {
                 getGender(data[5]),
                 Integer.parseInt(data[6])
         );
-        dataManagement.personList.add(dataManagement.continuousPersonID, person);
+        dataManagement.personList.add(Integer.parseInt(data[0]), person);
     }
 
     /**

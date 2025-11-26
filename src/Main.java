@@ -1,5 +1,5 @@
 public class Main {
-    static void main() {
+    static void main() throws InterruptedException {
         FileInput fileInput = new FileInput();
         fileInput.importAddresses();
         fileInput.importPersonManagements();
