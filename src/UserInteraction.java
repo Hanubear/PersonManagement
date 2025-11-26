@@ -94,19 +94,69 @@ public class UserInteraction implements DateMatcher {
         Thread.sleep(850);
         System.out.print("▓▓▓▓");
         Thread.sleep(300);
-        System.out.println("▓▓▓▓▓▓");
+        System.out.println("▓▓▓▓▓▓▓");
         System.out.println("Loading successful");
     }
 
     public void printMainMenu() {
         System.out.println("""
-                Whats on your mind?
-                1 -> add new Person
-                2 -> print List
-                3 -> sync File with new entries
+                ---------------------
+                What's on your mind?
+                ---------------------
+                1 -> Person
+                2 -> Address
+                3 -> PMCategory
+                ---------------------
                 :q! -> Close Program
                 """);
     }
+
+    public void printPersonMenu(){
+        System.out.println("""
+                ---------------------
+                Who's on your mind?
+                ---------------------
+                1 -> add new Person
+                2 -> print Person
+                3 -> delete Person
+                4 -> update PersonCSV
+                5 -> Back
+                ---------------------
+                :q! -> Close Program
+                """);
+    }
+
+    public void printPersonManagementMenu(){
+        System.out.println("""
+                ---------------------
+                Why's on your mind?
+                ---------------------
+                1 -> add PMCategory
+                2 -> print PMCategory
+                3 -> del PMCategory
+                4 -> update PMCategoryCSV
+                5 -> Backstreetsback
+                ---------------------
+                :q! -> Close Program
+                """);
+    }
+
+    public void printAddressMenu(){
+        System.out.println("""
+                ---------------------
+                Where's on your mind?
+                ---------------------
+                1 -> add Address
+                2 -> print Address
+                3 -> del Address
+                4 -> update AddressCSV
+                5 -> Guess who's back
+                ---------------------
+                :q! -> Close Program
+                """);
+    }
+
+
     public String getMenuSelect (){
         return scanner.nextLine();
     }

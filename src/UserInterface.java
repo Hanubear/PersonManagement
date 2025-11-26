@@ -1,23 +1,27 @@
 public class UserInterface {
-    public void startUserInterface () throws InterruptedException {
+    public void startUserInterface() throws InterruptedException {
         UserInteraction userInteraction = new UserInteraction();
         boolean run = true;
         String select;
 
         userInteraction.printAnnoyingLoadingBar();
-        while (run){
+        while (run) {
             userInteraction.printMainMenu();
             select = userInteraction.getMenuSelect();
-            switch (select){
+            /*
+            1 -> Person
+            2 -> Address
+            3 -> PMCategory
+             */
+            switch (select) {
                 case "1" -> {
-                    //add Person
-
+                    userInteraction.printPersonMenu();
                 }
                 case "2" -> {
-                    //Print List
+                    userInteraction.printAddressMenu();
                 }
                 case "3" -> {
-
+                    userInteraction.printPersonManagementMenu();
                 }
                 case "4" -> {
                     //asd

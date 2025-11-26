@@ -6,7 +6,7 @@ public class FileWriter {
 
     public void exportAddresses() {
         try {
-            BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("data/addresses.csv", true));
+            BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("data/addresses.csv"));
             bw.newLine();                      // move to a new line
             bw.write("Appended line");         // add new text at the end
             System.out.println("Successfully appended to the file.");
@@ -17,7 +17,7 @@ public class FileWriter {
 
     public void exportPersonManagements() {
         try {
-            BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("data/personManagements.csv", true));
+            BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("data/personManagements.csv"));
             bw.newLine();                      // move to a new line
             bw.write("Appended line");         // add new text at the end
             System.out.println("Successfully appended to the file.");
@@ -28,7 +28,7 @@ public class FileWriter {
 
     public void exportPersons() {
         try {
-            BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("data/persons.csv", true));
+            BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("data/persons.csv"));
             bw.newLine();                      // move to a new line
             bw.write("Appended line");         // add new text at the end
             System.out.println("Successfully appended to the file.");
