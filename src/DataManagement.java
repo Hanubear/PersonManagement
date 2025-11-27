@@ -34,7 +34,7 @@ public class DataManagement {
      *
      * @param data
      */
-    public static void createPersonFromFile(String[] data) {
+    public void createPersonFromFile(String[] data) {
         Person person = new Person(
                 Integer.parseInt(data[0]),
                 data[1],
@@ -44,7 +44,7 @@ public class DataManagement {
                 (data[5]),
                 Integer.parseInt(data[6])
         );
-        dataManagement.personList.add(Integer.parseInt(data[0]), person);
+        personList.add(Integer.parseInt(data[0]), person);
     }
 }
 
