@@ -46,7 +46,7 @@ public class FileReader {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
-                Person.createPersonFromFile(dataFill);
+                dataManagement.createPersonFromFile(dataFill);
             }
             reader.close();
         } catch (IOException e) {
