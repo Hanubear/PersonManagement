@@ -1,7 +1,8 @@
 import java.util.Locale;
 
 public class Person {
-    static DataManagement dataManagement = new DataManagement();
+    private static int continuousPersonID = 0;
+
 
     public int id;
     public String firstName;
@@ -17,71 +18,36 @@ public class Person {
                   String lastName,
                   String dateOfBirth,
                   int addressId,
-                  Enum gender,
+                  String gender,
                   int personManagementId
     ) {
+        if (id > continuousPersonID) continuousPersonID = id;
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.addressId = addressId;
-        this.gender = gender;
+        this.gender = getGender(gender);
         this.personManagementId = personManagementId;
     }
 
-    /**
-     * id;
-     * firstName;
-     * lastName;
-     * dateOfBirth;
-     * addressId;
-     * gender;
-     * personManagementId;
-     *
-     * @param data
-     */
-    public static void createPersonFromFile(String[] data) {
-        dataManagement.continuousPersonID++;
-        Person person = new Person(
-                Integer.parseInt(data[0]),
-                data[1],
-                data[2],
-                data[3],
-                Integer.parseInt(data[4]),
-                getGender(data[5]),
-                Integer.parseInt(data[6])
-        );
-        dataManagement.personList.add(Integer.parseInt(data[0]), person);
-    }
-
-    /**
-     * String id,
-     * String firstName,
-     * String lastName,
-     * String dateOfBirth,
-     * String address,
-     * Enum gender,
-     * String personManagement
-     *
-     * @param newPersonData
-     * @param personMgmtId
-     */
-    public static void createPerson(String[] newPersonData, int personMgmtId) {
-        dataManagement.continuousPersonID++;
-        Person person = new Person(
-                dataManagement.continuousPersonID,
-                newPersonData[0],
-                newPersonData[1],
-                newPersonData[2],
-                Integer.parseInt(newPersonData[3]),
-                getGender(newPersonData[4]),
-                personMgmtId
-        );
-        dataManagement.personList.add(dataManagement.continuousPersonID, person);
+    public Person(String firstName,
+                  String lastName,
+                  String dateOfBirth,
+                  int addressId,
+                  String gender,
+                  int personManagementId) {
+        this.id = ++continuousPersonID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.addressId = addressId;
+        this.gender = getGender(gender);
+        this.personManagementId = personManagementId;
     }
 
 
-    private static Enum getGender(String gender) {
+    private Enum getGender(String gender) {
         try {
             switch (gender.toLowerCase(Locale.ROOT)) {
                 case "male" -> {
