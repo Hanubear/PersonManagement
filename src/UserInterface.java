@@ -4,6 +4,7 @@ public class UserInterface {
     public void startUserInterface() throws InterruptedException {
         UserInteraction userInteraction = new UserInteraction();
         DataManagement dataManagement = new DataManagement();
+        FileWriter fileWriter = new FileWriter();
         boolean run = true;
         String select;
 
@@ -29,14 +30,16 @@ public class UserInterface {
                         }
                         case "3" -> {
                             //update PersonCSV
-
+                            fileWriter.exportPersons(dataManagement.personList);
+                            userInteraction.printAnnoyingLoadingBar();
                         }
                         case "4" -> {
-                            //Back
-
+                            return;
                         }
                         case ":q!" -> {
                             //close
+                            System.out.println("Shutting down");
+                            shutdown();
                             run = false;
                         }
 
@@ -48,23 +51,25 @@ public class UserInterface {
                     select = userInteraction.getMenuSelect();
                     switch (select) {
                         case "1" -> {
-                            //add new Person
-
+                            //add new Address
+                            dataManagement.createNewAddress();
                         }
                         case "2" -> {
-                            //delete Person
-
+                            //delete Address
+                            dataManagement.deleteAddress(userInteraction.getIdSelect());
                         }
                         case "3" -> {
-                            //update PersonCSV
-
+                            //update AddressCSV
+                            fileWriter.exportAddresses(dataManagement.addressHashMap);
                         }
                         case "4" -> {
                             //Back
-
+                            return;
                         }
                         case ":q!" -> {
                             //close
+                            System.out.println("Shutting down");
+                            shutdown();
                             run = false;
                         }
 
@@ -75,23 +80,25 @@ public class UserInterface {
                     select = userInteraction.getMenuSelect();
                     switch (select) {
                         case "1" -> {
-                            //add new Person
-
+                            //add new PersonManagement
+                            dataManagement.createPersonManagement(userInteraction.getMenuSelect());
                         }
                         case "2" -> {
-                            //delete Person
-
+                            //delete PersonManagement
+                            dataManagement.deletePersonManagement(userInteraction.getIdSelect());
                         }
                         case "3" -> {
-                            //update PersonCSV
-
+                            //update PersonManagementCSV
+                            fileWriter.exportPersonManagements(dataManagement.personManagementHashMap);
                         }
                         case "4" -> {
                             //Back
-
+                            return;
                         }
                         case ":q!" -> {
                             //close
+                            System.out.println("Shutting down");
+                            shutdown();
                             run = false;
                         }
 
@@ -99,10 +106,11 @@ public class UserInterface {
                 }
                 case "4" -> {
                     // ALL CSV UPDATE METHODS IN HERE
-
+                    shutdown();
                 }
                 case ":q!" -> {
                     //update and close
+                    shutdown();
                     run = false;
                 }
 
@@ -110,5 +118,13 @@ public class UserInterface {
 
         }
 
+    }
+    private void shutdown(){
+        FileWriter fileWriter = new FileWriter();
+        DataManagement dataManagement = new DataManagement();
+
+        fileWriter.exportPersons(dataManagement.personList);
+        fileWriter.exportAddresses(dataManagement.addressHashMap);
+        fileWriter.exportPersonManagements(dataManagement.personManagementHashMap);
     }
 }

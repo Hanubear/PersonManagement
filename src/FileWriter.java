@@ -10,17 +10,33 @@ public class FileWriter {
     String data;
 
 
-    public void exportAddresses() {
+    public void exportAddresses(HashMap<Integer,Address>hashMap) {
         try {
-            BufferedWriter bw = new BufferedWriter(new java.io.FileWriter("data/addresses.csv"));
-            bw.newLine();                          // move to a new line
-            bw.write(" ");                     // add new text at the end
+            java.io.FileWriter file = new java.io.FileWriter("data/addresses.csv");
+            BufferedWriter output = new BufferedWriter(file);
+
+            //"id","street","zip","city"
+            output.write("\"id\",\"street\",\"zip\",\"city\"");
+            output.newLine();
+            for (int i = 0; i < hashMap.size(); i++) {
+                data = "";
+                sj.add(String.valueOf(hashMap.get(i).streetId));
+                sj.add(hashMap.get(i).street);
+                sj.add(hashMap.get(i).zip);
+                sj.add(hashMap.get(i).city);
+
+                data = String.valueOf(sj);
+                output.write(data);
+                output.newLine();
+            }
+
+            output.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void exportPersonManagements(HashMap<Integer,String> hashMap) {
+    public void exportPersonManagements(HashMap<Integer,PersonManagement> hashMap) {
         try {
             java.io.FileWriter file = new java.io.FileWriter("data/personManagements.csv");
             BufferedWriter output = new BufferedWriter(file);
@@ -30,13 +46,8 @@ public class FileWriter {
             output.newLine();
             for (int i = 0; i < hashMap.size(); i++) {
                 data = "";
-                sj.add(String.valueOf(list.get(i).id));
-                sj.add(list.get(i).firstName);
-                sj.add(list.get(i).lastName);
-                sj.add(list.get(i).dateOfBirth);
-                sj.add(String.valueOf(list.get(i).addressId));
-                sj.add(list.get(i).gender.toString());
-                sj.add(String.valueOf(list.get(i).personManagementId));
+                sj.add(String.valueOf(hashMap.get(i).id));
+                sj.add(hashMap.get(i).name);
 
                 data = String.valueOf(sj);
                 output.write(data);

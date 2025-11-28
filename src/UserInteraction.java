@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class UserInteraction implements DateMatcher {
+    DataManagement dataManagement = new DataManagement();
     Scanner scanner = new Scanner(System.in);
 
     private static final String NAME_REGEX = "^\\p{L}+([\\p{L}\\p{M}'\\- ]*\\p{L})?$";
@@ -59,9 +60,8 @@ public class UserInteraction implements DateMatcher {
             }
         } while (!success);
 
-        System.out.println("enter Address: ");
-        input = scanner.nextLine();
-        personData[3] = input;
+        System.out.println("Address: ");
+        personData[3] = String.valueOf(dataManagement.createNewAddress());
 
         success = false;
         do {
@@ -78,6 +78,10 @@ public class UserInteraction implements DateMatcher {
             }
         } while (!success);
         return personData;
+    }
+
+    public String scannerAddressData(){
+        return scanner.nextLine();
     }
 
     public void printAnnoyingLoadingBar() throws InterruptedException {

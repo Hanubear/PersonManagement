@@ -24,4 +24,19 @@ public class Address {
         this.zip = zip;
     }
 
+    public Address() {
+        this.streetId = ++continuousAddressID;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
 }

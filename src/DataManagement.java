@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class DataManagement {
+    UserInteraction userInteraction = new UserInteraction();
     public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
     public HashMap<Integer, Address> addressHashMap = new HashMap<>();
     public List<Person> personList = new ArrayList<>();
@@ -68,6 +69,12 @@ public class DataManagement {
         personManagementHashMap.put(personManagement.id, personManagement);
     }
 
+    public void deletePersonManagement(int pmId) {
+        for (int i = 1; i <= personManagementHashMap.size(); i++) {
+            if (personManagementHashMap.get(i).id == pmId) personList.remove(i);
+        }
+    }
+
     public void printPersonManagementList() {
         System.out.println(personManagementHashMap);
     }
@@ -82,6 +89,24 @@ public class DataManagement {
     public void createNewAddress(String street, String zip, String city) {
         Address address = new Address(street, zip, city);
         addressHashMap.put(address.streetId, address);
+    }
+
+    public int createNewAddress(){
+        Address address = new Address();
+        System.out.println("Street: ");
+        address.setCity(userInteraction.scannerAddressData());
+        System.out.println("Zip: ");
+        address.setCity(userInteraction.scannerAddressData());
+        System.out.println("City: ");
+        address.setCity(userInteraction.scannerAddressData());
+        addressHashMap.put(address.streetId, address);
+        return address.streetId;
+    }
+
+    public void deleteAddress(int addressId) {
+        for (int i = 1; i <= addressHashMap.size(); i++) {
+            if (addressHashMap.get(i).streetId == addressId) personList.remove(i);
+        }
     }
 
     public String getAddressAsString(int addressId) {
