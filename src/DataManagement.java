@@ -1,10 +1,7 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class DataManagement {
-    UserInteraction userInteraction = new UserInteraction();
+    public Scanner scanner = new Scanner(System.in);
     public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
     public HashMap<Integer, Address> addressHashMap = new HashMap<>();
     public List<Person> personList = new ArrayList<>();
@@ -94,11 +91,11 @@ public class DataManagement {
     public int createNewAddress(){
         Address address = new Address();
         System.out.println("Street: ");
-        address.setCity(userInteraction.scannerAddressData());
+        address.setCity(scanner.nextLine());
         System.out.println("Zip: ");
-        address.setCity(userInteraction.scannerAddressData());
+        address.setCity(scanner.nextLine());
         System.out.println("City: ");
-        address.setCity(userInteraction.scannerAddressData());
+        address.setCity(scanner.nextLine());
         addressHashMap.put(address.streetId, address);
         return address.streetId;
     }
