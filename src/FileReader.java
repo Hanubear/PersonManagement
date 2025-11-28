@@ -13,7 +13,7 @@ public class FileReader {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
-                Address.createAddressFromFile((Integer.parseInt(dataFill[0])), dataFill[1], dataFill[2], dataFill[3]);
+                dataManagement.createAddressFromFile((Integer.parseInt(dataFill[0])), dataFill[1], dataFill[2], dataFill[3]);
             }
             reader.close();
         } catch (IOException e) {
@@ -29,8 +29,7 @@ public class FileReader {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
-                dataManagement.personManagementHashMap.put(Integer.parseInt(dataFill[0]), dataFill[1]);
-                // createNewPersonMgmt();
+                dataManagement.createPersonManagement(dataFill[1]);
             }
             reader.close();
         } catch (IOException e) {

@@ -3,7 +3,6 @@ import java.util.Locale;
 public class Person {
     private static int continuousPersonID = 0;
 
-
     public int id;
     public String firstName;
     public String lastName;
@@ -45,7 +44,6 @@ public class Person {
         this.gender = getGender(gender);
         this.personManagementId = personManagementId;
     }
-
 
     private Enum getGender(String gender) {
         try {

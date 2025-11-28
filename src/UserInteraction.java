@@ -81,7 +81,7 @@ public class UserInteraction implements DateMatcher {
     }
 
     public void printAnnoyingLoadingBar() throws InterruptedException {
-        System.out.print("\nLoading: ");
+        System.out.print("\nInitializing Self Destruct: ");
         System.out.print("▓▓");
         Thread.sleep(450);
         System.out.print("▓▓▓▓▓▓");
@@ -95,9 +95,16 @@ public class UserInteraction implements DateMatcher {
         System.out.print("▓▓▓▓");
         Thread.sleep(300);
         System.out.println("▓▓▓▓▓▓▓");
-        System.out.println("Loading successful");
+        System.out.println("Initialization successful");
     }
 
+    /**
+     * 1 -> Person
+     * <br>2 -> Address
+     * <br>3 -> PMCategory
+     * <br>---------------------
+     * <br>:q! -> Close Program
+     */
     public void printMainMenu() {
         System.out.println("""
                 ---------------------
@@ -106,59 +113,85 @@ public class UserInteraction implements DateMatcher {
                 1 -> Person
                 2 -> Address
                 3 -> PMCategory
+                4 -> Update all CSV
                 ---------------------
                 :q! -> Close Program
                 """);
     }
 
-    public void printPersonMenu(){
+    /**
+     * 1 -> add new Person
+     * <br>2 -> print Person
+     * <br>3 -> update PersonCSV
+     * <br>4 -> Back
+     * <br>---------------------
+     * <br>:q! -> Close Program
+     */
+    public void printPersonMenu() {
         System.out.println("""
                 ---------------------
                 Who's on your mind?
                 ---------------------
                 1 -> add new Person
-                2 -> print Person
-                3 -> delete Person
-                4 -> update PersonCSV
-                5 -> Back
+                2 -> delete Person
+                3 -> update PersonCSV
+                4 -> Back
                 ---------------------
                 :q! -> Close Program
                 """);
     }
 
-    public void printPersonManagementMenu(){
+    /**
+     * 1 -> add PMCategory
+     * <br>2 -> del PMCategory
+     * <br>3 -> update PMCategoryCSV
+     * <br>4 -> Guess who's back
+     * <br>---------------------
+     * <br>:q! -> Close Program
+     */
+    public void printPersonManagementMenu() {
         System.out.println("""
                 ---------------------
                 Why's on your mind?
                 ---------------------
                 1 -> add PMCategory
-                2 -> print PMCategory
-                3 -> del PMCategory
-                4 -> update PMCategoryCSV
-                5 -> Backstreetsback
+                2 -> del PMCategory
+                3 -> update PMCategoryCSV
+                4 -> Guess who's back
                 ---------------------
                 :q! -> Close Program
                 """);
     }
 
-    public void printAddressMenu(){
+    /**
+     * 1 -> add Address
+     * <br>2 -> del Address
+     * <br>3 -> update AddressCSV
+     * <br>4 -> Backstreetsback
+     * <br>---------------------
+     * <br>:q! -> Close Program
+     */
+    public void printAddressMenu() {
         System.out.println("""
                 ---------------------
                 Where's on your mind?
                 ---------------------
                 1 -> add Address
-                2 -> print Address
-                3 -> del Address
-                4 -> update AddressCSV
-                5 -> Guess who's back
+                2 -> del Address
+                3 -> update AddressCSV
+                4 -> Backstreetsback
                 ---------------------
                 :q! -> Close Program
                 """);
     }
 
 
-    public String getMenuSelect (){
+    public String getMenuSelect() {
         return scanner.nextLine();
+    }
+
+    public int getIdSelect() {
+        return scanner.nextInt();
     }
 
     @Override

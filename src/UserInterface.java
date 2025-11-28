@@ -1,6 +1,9 @@
+import javax.xml.crypto.Data;
+
 public class UserInterface {
     public void startUserInterface() throws InterruptedException {
         UserInteraction userInteraction = new UserInteraction();
+        DataManagement dataManagement = new DataManagement();
         boolean run = true;
         String select;
 
@@ -8,26 +11,98 @@ public class UserInterface {
         while (run) {
             userInteraction.printMainMenu();
             select = userInteraction.getMenuSelect();
-            /*
-            1 -> Person
-            2 -> Address
-            3 -> PMCategory
-             */
-            switch (select) {
-                case "1" -> {
+            switch (select) { // ~~~MAIN MENU~~~
+                case "1" -> { // ~~~PERSON~~~
                     userInteraction.printPersonMenu();
+                    select = userInteraction.getMenuSelect();
+                    switch (select) {
+                        case "1" -> {
+                            //where to
+                            dataManagement.printPersonManagementList();
+                            int selectID = userInteraction.getIdSelect();
+                            //add new Person
+                            dataManagement.createPerson(userInteraction.scannerPersonData(), selectID);
+                        }
+                        case "2" -> {
+                            //delete Person
+                            dataManagement.deletePerson(userInteraction.getIdSelect());
+                        }
+                        case "3" -> {
+                            //update PersonCSV
+
+                        }
+                        case "4" -> {
+                            //Back
+
+                        }
+                        case ":q!" -> {
+                            //close
+                            run = false;
+                        }
+
+                    }
+
                 }
-                case "2" -> {
+                case "2" -> { // ~~~ADDRESS~~~
                     userInteraction.printAddressMenu();
+                    select = userInteraction.getMenuSelect();
+                    switch (select) {
+                        case "1" -> {
+                            //add new Person
+
+                        }
+                        case "2" -> {
+                            //delete Person
+
+                        }
+                        case "3" -> {
+                            //update PersonCSV
+
+                        }
+                        case "4" -> {
+                            //Back
+
+                        }
+                        case ":q!" -> {
+                            //close
+                            run = false;
+                        }
+
+                    }
                 }
-                case "3" -> {
+                case "3" -> { // ~~~PMCategory~~~
                     userInteraction.printPersonManagementMenu();
+                    select = userInteraction.getMenuSelect();
+                    switch (select) {
+                        case "1" -> {
+                            //add new Person
+
+                        }
+                        case "2" -> {
+                            //delete Person
+
+                        }
+                        case "3" -> {
+                            //update PersonCSV
+
+                        }
+                        case "4" -> {
+                            //Back
+
+                        }
+                        case ":q!" -> {
+                            //close
+                            run = false;
+                        }
+
+                    }
                 }
                 case "4" -> {
-                    //asd
+                    // ALL CSV UPDATE METHODS IN HERE
+
                 }
                 case ":q!" -> {
-                    //close
+                    //update and close
                     run = false;
                 }
 

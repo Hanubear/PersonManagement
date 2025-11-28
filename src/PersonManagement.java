@@ -1,43 +1,38 @@
 public class PersonManagement {
     static DataManagement dataManagement = new DataManagement();
+    private static int continuousPersonMgmtID = 0;
 
-    public static String getPersonManagement(int personMgmtId) {
-        String personMgmt;
-        personMgmt = dataManagement.personManagementHashMap.get(personMgmtId);
-        return personMgmt;
+    public int id;
+    public String name;
+
+    public PersonManagement(int id, String name) {
+        if (id > continuousPersonMgmtID) continuousPersonMgmtID = id;
+        this.id = id;
+        this.name = name;
     }
 
-    public int createPersonManagement(String name) {
-        int key = dataManagement.continuousPersonMgmtID;
-        dataManagement.personManagementHashMap.put(key, name);
-        dataManagement.continuousPersonMgmtID++;
-        return dataManagement.continuousPersonMgmtID;
+    public PersonManagement(String name) {
+        this.id = ++continuousPersonMgmtID;
+        this.name = name;
     }
 
-    public String get(int personManagementId){
-        try {
-            return dataManagement.personManagementHashMap.get(personManagementId);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    /**liefert die Anzahl der aktualisierten Zeilen
+    /**
+     * Update CSV
      *
      * @param personManagement
      * @return Anzahl der aktualisierten Zeilen
      */
-    public int update(PersonManagement personManagement){
+    public void update(PersonManagement personManagement) {
 
-        return 0;
     }
 
-    /**liefert das gelöschte Objekt
+    /**
+     * liefert das gelöschte Objekt
      *
      * @param personManagementId
      * @return
      */
-    public PersonManagement delete(int personManagementId){
+    public PersonManagement delete(int personManagementId) {
 
         return null;
     }

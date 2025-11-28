@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.StringJoiner;
 
 public class DataManagement {
-    public int continuousAddressID = 0;
-    public int continuousPersonMgmtID = 0;
+    public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
+    public HashMap<Integer, Address> addressHashMap = new HashMap<>();
     public List<Person> personList = new ArrayList<>();
 
-    public HashMap<Integer, String> personManagementHashMap = new HashMap<>();
-    public HashMap<Integer, Address> addressHashMap = new HashMap<>();
 
+    // ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON
 
     public void createPerson(String[] newPersonData, int personMgmtId) {
         Person person = new Person(
@@ -45,6 +45,54 @@ public class DataManagement {
                 Integer.parseInt(data[6])
         );
         personList.add(Integer.parseInt(data[0]), person);
+    }
+
+    public void deletePerson(int personId) {
+        for (int i = 0; i < personList.size(); i++) {
+            if (personList.get(i).id == personId) personList.remove(i);
+        }
+    }
+
+    // ~~ PERSONMANAGEMENT ~~ PERSONMANAGEMENT ~~ PERSONMANAGEMENT ~~ PERSONMANAGEMENT
+
+    public PersonManagement getPersonManagement(int personManagementId) {
+        try {
+            return personManagementHashMap.get(personManagementId);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void createPersonManagement(String name) {
+        PersonManagement personManagement = new PersonManagement(name);
+        personManagementHashMap.put(personManagement.id, personManagement);
+    }
+
+    public void printPersonManagementList() {
+        System.out.println(personManagementHashMap);
+    }
+
+    // ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS
+
+    public void createAddressFromFile(int addressId, String street, String zip, String city) {
+        Address address = new Address(addressId, street, zip, city);
+        addressHashMap.put(addressId, address);
+    }
+
+    public void createNewAddress(String street, String zip, String city) {
+        Address address = new Address(street, zip, city);
+        addressHashMap.put(address.streetId, address);
+    }
+
+    public String getAddressAsString(int addressId) {
+        StringJoiner sj = new StringJoiner(", ", " ", " ");
+        String addressString;
+        sj.add(addressHashMap.get(addressId).street);
+        sj.add(addressHashMap.get(addressId).city);
+        sj.add(addressHashMap.get(addressId).zip);
+        addressString = String.valueOf(sj);
+
+        return addressString;
     }
 }
 
