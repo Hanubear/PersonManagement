@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 public class FileWriter {
-    DataManagement dataManagement = new DataManagement();
-    StringJoiner sj = new StringJoiner("\",\"", "\"", "\"");
-    String data;
-
+    private String data;
 
     public void exportAddresses(HashMap<Integer,Address>hashMap) {
         try {
@@ -18,7 +15,8 @@ public class FileWriter {
             //"id","street","zip","city"
             output.write("\"id\",\"street\",\"zip\",\"city\"");
             output.newLine();
-            for (int i = 0; i < hashMap.size(); i++) {
+            for (int i = 1; i <= hashMap.size(); i++) {
+                StringJoiner sj = new StringJoiner("\",\"", "\"", "\"");
                 data = "";
                 sj.add(String.valueOf(hashMap.get(i).streetId));
                 sj.add(hashMap.get(i).street);
@@ -44,7 +42,8 @@ public class FileWriter {
             //"id","name"
             output.write("\"id\",\"name\"");
             output.newLine();
-            for (int i = 0; i < hashMap.size(); i++) {
+            for (int i = 1; i <= hashMap.size(); i++) {
+                StringJoiner sj = new StringJoiner("\",\"", "\"", "\"");
                 data = "";
                 sj.add(String.valueOf(hashMap.get(i).id));
                 sj.add(hashMap.get(i).name);
@@ -68,7 +67,8 @@ public class FileWriter {
             //"id","firstname","lastname","date of birth","addressId","gender","personManagementId"
             output.write("\"id\",\"firstname\",\"lastname\",\"date of birth\",\"addressId\",\"gender\",\"personManagementId\"");
             output.newLine();
-            for (int i = 1; i <= list.size(); i++) {
+            for (int i = 1; i < list.size(); i++) {
+                StringJoiner sj = new StringJoiner("\",\"", "\"", "\"");
                 data = "";
                 sj.add(String.valueOf(list.get(i).id));
                 sj.add(list.get(i).firstName);

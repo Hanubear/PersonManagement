@@ -3,12 +3,12 @@ public class Main {
 
         FileReader fileInput = new FileReader();
         DataManagement dataManagement = new DataManagement();
-        fileInput.importAddresses();
-        fileInput.importPersonManagements();
-        fileInput.importPersons();
+        fileInput.importAddresses(dataManagement);
+        fileInput.importPersonManagements(dataManagement);
+        fileInput.importPersons(dataManagement);
 
         UserInterface userInterface = new UserInterface();
-        userInterface.startUserInterface();
+        userInterface.startUserInterface(dataManagement);
 
     }
 }

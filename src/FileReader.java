@@ -2,10 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class FileReader {
-    DataManagement dataManagement = new DataManagement();
     public String[] dataFill;
 
-    public void importAddresses() {
+    public void importAddresses(DataManagement dataManagement) {
         try {
             BufferedReader reader = new BufferedReader(new java.io.FileReader("data/addresses.csv"));
             String line;
@@ -13,6 +12,7 @@ public class FileReader {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
+                dataFill = Utility.removeQuotation(dataFill);
                 dataManagement.createAddressFromFile((Integer.parseInt(dataFill[0])), dataFill[1], dataFill[2], dataFill[3]);
             }
             reader.close();
@@ -21,7 +21,7 @@ public class FileReader {
         }
     }
 
-    public void importPersonManagements() {
+    public void importPersonManagements(DataManagement dataManagement) {
         try {
             BufferedReader reader = new BufferedReader(new java.io.FileReader("data/personManagements.csv"));
             String line;
@@ -29,6 +29,7 @@ public class FileReader {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
+                dataFill = Utility.removeQuotation(dataFill);
                 dataManagement.createPersonManagement(dataFill[1]);
             }
             reader.close();
@@ -37,7 +38,7 @@ public class FileReader {
         }
     }
 
-    public void importPersons() {
+    public void importPersons(DataManagement dataManagement) {
         try {
             BufferedReader reader = new BufferedReader(new java.io.FileReader("data/persons.csv"));
             String line;
@@ -46,6 +47,7 @@ public class FileReader {
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");
+                dataFill = Utility.removeQuotation(dataFill);
                 dataManagement.createPersonFromFile(dataFill);
             }
             reader.close();

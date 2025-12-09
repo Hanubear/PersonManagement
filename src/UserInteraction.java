@@ -4,8 +4,8 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class UserInteraction implements DateMatcher {
-    DataManagement dataManagement = new DataManagement();
     Scanner scanner = new Scanner(System.in);
+    private DataManagement dataManagement;
 
     private static final String NAME_REGEX = "^\\p{L}+([\\p{L}\\p{M}'\\- ]*\\p{L})?$";
     private static final Pattern DATE_PATTERN = Pattern.compile(
@@ -13,6 +13,10 @@ public class UserInteraction implements DateMatcher {
                     + "|^(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))$"
                     + "|^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$"
                     + "|^(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$");
+
+    public UserInteraction(DataManagement dataManagement) {
+        this.dataManagement = dataManagement;
+    }
 
     public String[] scannerPersonData() {
         String[] personData = new String[5];
@@ -80,7 +84,7 @@ public class UserInteraction implements DateMatcher {
         return personData;
     }
 
-    public String scannerAddressData(){
+    public String scannerAddressData() {
         return scanner.nextLine();
     }
 

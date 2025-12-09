@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class UserInterface {
-    public void startUserInterface() throws InterruptedException {
-        UserInteraction userInteraction = new UserInteraction();
-        DataManagement dataManagement = new DataManagement();
+    public void startUserInterface(DataManagement dataManagement) throws InterruptedException {
+        UserInteraction userInteraction = new UserInteraction(dataManagement);
         FileWriter fileWriter = new FileWriter();
         boolean run = true;
         String select;
