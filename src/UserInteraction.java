@@ -85,7 +85,7 @@ public class UserInteraction implements DateMatcher {
     }
 
     public void printAnnoyingLoadingBar() throws InterruptedException {
-        System.out.print("\nInitializing Self Destruct: ");
+        System.out.print("\nInitializing Self Destruction: ");
         System.out.print("▓▓");
         Thread.sleep(450);
         System.out.print("▓▓▓▓▓▓");

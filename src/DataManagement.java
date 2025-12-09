@@ -4,7 +4,7 @@ public class DataManagement {
     public Scanner scanner = new Scanner(System.in);
     public HashMap<Integer, PersonManagement> personManagementHashMap = new HashMap<>();
     public HashMap<Integer, Address> addressHashMap = new HashMap<>();
-    public List<Person> personList = new ArrayList<>();
+    public ArrayList<Person> personList = new ArrayList<>();
 
 
     // ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON ~~ PERSON
@@ -42,7 +42,7 @@ public class DataManagement {
                 (data[5]),
                 Integer.parseInt(data[6])
         );
-        personList.add(Integer.parseInt(data[0]), person);
+        personList.add(person.id, person);
     }
 
     public void deletePerson(int personId) {

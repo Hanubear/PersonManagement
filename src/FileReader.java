@@ -42,6 +42,7 @@ public class FileReader {
             BufferedReader reader = new BufferedReader(new java.io.FileReader("data/persons.csv"));
             String line;
             reader.readLine(); // Skip header line
+            dataManagement.personList.add(0, null);
             while ((line = reader.readLine()) != null) {
                 if (line.isBlank()) continue;
                 dataFill = line.split(",");

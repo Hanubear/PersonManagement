@@ -12,7 +12,7 @@ public class FileWriter {
 
     public void exportAddresses(HashMap<Integer,Address>hashMap) {
         try {
-            java.io.FileWriter file = new java.io.FileWriter("data/addresses.csv");
+            java.io.FileWriter file = new java.io.FileWriter("data/testAddresses.csv");
             BufferedWriter output = new BufferedWriter(file);
 
             //"id","street","zip","city"
@@ -38,7 +38,7 @@ public class FileWriter {
 
     public void exportPersonManagements(HashMap<Integer,PersonManagement> hashMap) {
         try {
-            java.io.FileWriter file = new java.io.FileWriter("data/personManagements.csv");
+            java.io.FileWriter file = new java.io.FileWriter("data/testPersonManagements.csv");
             BufferedWriter output = new BufferedWriter(file);
 
             //"id","name"
@@ -62,13 +62,13 @@ public class FileWriter {
 
     public void exportPersons(List<Person> list) {
         try {
-            java.io.FileWriter file = new java.io.FileWriter("data/persons.csv");
+            java.io.FileWriter file = new java.io.FileWriter("data/testPersons.csv");
             BufferedWriter output = new BufferedWriter(file);
 
             //"id","firstname","lastname","date of birth","addressId","gender","personManagementId"
             output.write("\"id\",\"firstname\",\"lastname\",\"date of birth\",\"addressId\",\"gender\",\"personManagementId\"");
             output.newLine();
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 1; i <= list.size(); i++) {
                 data = "";
                 sj.add(String.valueOf(list.get(i).id));
                 sj.add(list.get(i).firstName);

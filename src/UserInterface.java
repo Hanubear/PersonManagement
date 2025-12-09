@@ -1,4 +1,6 @@
-import javax.xml.crypto.Data;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class UserInterface {
     public void startUserInterface() throws InterruptedException {
@@ -8,7 +10,7 @@ public class UserInterface {
         boolean run = true;
         String select;
 
-        userInteraction.printAnnoyingLoadingBar();
+//        userInteraction.printAnnoyingLoadingBar();
         while (run) {
             userInteraction.printMainMenu();
             select = userInteraction.getMenuSelect();
@@ -39,7 +41,7 @@ public class UserInterface {
                         case ":q!" -> {
                             //close
                             System.out.println("Shutting down");
-                            shutdown();
+                            shutdown(fileWriter, dataManagement.personList, dataManagement.addressHashMap, dataManagement.personManagementHashMap);
                             run = false;
                         }
 
@@ -69,7 +71,7 @@ public class UserInterface {
                         case ":q!" -> {
                             //close
                             System.out.println("Shutting down");
-                            shutdown();
+                            shutdown(fileWriter, dataManagement.personList, dataManagement.addressHashMap, dataManagement.personManagementHashMap);
                             run = false;
                         }
 
@@ -98,7 +100,7 @@ public class UserInterface {
                         case ":q!" -> {
                             //close
                             System.out.println("Shutting down");
-                            shutdown();
+                            shutdown(fileWriter, dataManagement.personList, dataManagement.addressHashMap, dataManagement.personManagementHashMap);
                             run = false;
                         }
 
@@ -106,11 +108,11 @@ public class UserInterface {
                 }
                 case "4" -> {
                     // ALL CSV UPDATE METHODS IN HERE
-                    shutdown();
+                    shutdown(fileWriter, dataManagement.personList, dataManagement.addressHashMap, dataManagement.personManagementHashMap);
                 }
                 case ":q!" -> {
                     //update and close
-                    shutdown();
+                    shutdown(fileWriter, dataManagement.personList, dataManagement.addressHashMap, dataManagement.personManagementHashMap);
                     run = false;
                 }
 
@@ -119,12 +121,10 @@ public class UserInterface {
         }
 
     }
-    private void shutdown(){
-        FileWriter fileWriter = new FileWriter();
-        DataManagement dataManagement = new DataManagement();
 
-        fileWriter.exportPersons(dataManagement.personList);
-        fileWriter.exportAddresses(dataManagement.addressHashMap);
-        fileWriter.exportPersonManagements(dataManagement.personManagementHashMap);
+    private void shutdown(FileWriter fileWriter, ArrayList<Person> list, HashMap<Integer, Address> addressHashMap, HashMap<Integer, PersonManagement> pmHashMap) {
+        fileWriter.exportPersons(list);
+        fileWriter.exportAddresses(addressHashMap);
+        fileWriter.exportPersonManagements(pmHashMap);
     }
 }
