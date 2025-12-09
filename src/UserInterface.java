@@ -22,7 +22,8 @@ public class UserInterface {
                             dataManagement.printPersonManagementList();
                             int selectID = userInteraction.getIdSelect();
                             //add new Person
-                            dataManagement.createPerson(userInteraction.scannerPersonData(), selectID);
+                            String[] personData = userInteraction.scannerPersonData();
+                            dataManagement.createPerson(personData, selectID);
                         }
                         case "2" -> {
                             //delete Person

@@ -1,7 +1,7 @@
 import java.util.Locale;
 
 public class Person {
-    private static int continuousPersonID = 0;
+    private static int continuousPersonID = 1;
 
     public int id;
     public String firstName;

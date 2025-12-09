@@ -46,7 +46,7 @@ public class DataManagement {
     }
 
     public void deletePerson(int personId) {
-        for (int i = 0; i < personList.size(); i++) {
+        for (int i = 1; i <= personList.size(); i++) {
             if (personList.get(i).id == personId) personList.remove(i);
         }
     }
@@ -73,7 +73,10 @@ public class DataManagement {
     }
 
     public void printPersonManagementList() {
-        System.out.println(personManagementHashMap);
+        for (int i = 1; i <= personManagementHashMap.size(); i++) {
+            System.out.print(personManagementHashMap.get(i).id + " ");
+            System.out.println(personManagementHashMap.get(i).name);
+        }
     }
 
     // ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS ~~ ADDRESS
@@ -90,12 +93,20 @@ public class DataManagement {
 
     public int createNewAddress(){
         Address address = new Address();
+        String input = "";
+
         System.out.println("Street: ");
-        address.setCity(scanner.nextLine());
+        input = scanner.nextLine();
+        address.setStreet(input);
+
         System.out.println("Zip: ");
-        address.setCity(scanner.nextLine());
+        input = scanner.nextLine();
+        address.setZip(input);
+
         System.out.println("City: ");
-        address.setCity(scanner.nextLine());
+        input = scanner.nextLine();
+        address.setCity(input);
+
         addressHashMap.put(address.streetId, address);
         return address.streetId;
     }

@@ -21,7 +21,6 @@ public class UserInteraction implements DateMatcher {
     public String[] scannerPersonData() {
         String[] personData = new String[5];
         String input;
-
         boolean success = false;
         do {
             try {
@@ -55,7 +54,7 @@ public class UserInteraction implements DateMatcher {
             try {
                 System.out.println("enter Date of Birth: ");
                 input = scanner.nextLine();
-                if (!input.matches(String.valueOf(DATE_PATTERN))) throw new InvalidDateException();
+                if (input.matches(String.valueOf(DATE_PATTERN))) throw new InvalidDateException();
                 personData[2] = input;
                 success = true;
             } catch (InvalidDateException e) {
@@ -65,6 +64,7 @@ public class UserInteraction implements DateMatcher {
         } while (!success);
 
         System.out.println("Address: ");
+        // new address or existing address?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?
         personData[3] = String.valueOf(dataManagement.createNewAddress());
 
         success = false;
@@ -72,7 +72,7 @@ public class UserInteraction implements DateMatcher {
             try {
                 System.out.println("enter Gender: ");
                 input = scanner.nextLine().toLowerCase(Locale.ROOT);
-                if (!input.matches("male") || !input.matches("female") || !input.matches("\\bdiv\\b"))
+                if (!input.matches("male") && !input.matches("female") && !input.matches("\\bdiv\\b"))
                     throw new InvalidPersonNameException();
                 personData[4] = input;
                 success = true;
@@ -199,6 +199,7 @@ public class UserInteraction implements DateMatcher {
     }
 
     public int getIdSelect() {
+        scanner.reset();
         return scanner.nextInt();
     }
 

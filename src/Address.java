@@ -1,7 +1,7 @@
 import java.util.StringJoiner;
 
 public class Address {
-    public static int continuousAddressID = 0;
+    public static int continuousAddressID = 1;
 
     public int streetId;
     public String street;
@@ -10,6 +10,7 @@ public class Address {
 
     //"id","street","zip","city"
     public Address(int streetId, String street, String zip, String city) {
+        if (streetId > continuousAddressID) continuousAddressID = streetId;
         this.streetId = streetId;
         this.street = street;
         this.zip = zip;
