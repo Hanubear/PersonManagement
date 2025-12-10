@@ -56,7 +56,7 @@ public class UserInterface {
                             fileWriter.exportPersons(dataManagement.personList);
                         }
                         case "4" -> {
-                            return;
+
                         }
                         case ":q!" -> {
                             //close
@@ -87,7 +87,7 @@ public class UserInterface {
                         }
                         case "4" -> {
                             //Back
-                            return;
+
                         }
                         case ":q!" -> {
                             //close
@@ -118,7 +118,7 @@ public class UserInterface {
                         }
                         case "4" -> {
                             //Back
-                            return;
+
                         }
                         case ":q!" -> {
                             //close
