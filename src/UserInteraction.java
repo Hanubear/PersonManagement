@@ -20,6 +20,7 @@ public class UserInteraction implements DateMatcher {
     }
 
     public String[] scannerPersonData() {
+        scanner.nextLine();
         String[] personData = new String[5];
         String input;
         boolean success = false;

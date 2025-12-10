@@ -46,7 +46,7 @@ public class DataManagement {
     }
 
     public void deletePerson(int personId) {
-        for (int i = 1; i < personList.size() - 1; i++) {
+        for (int i = 1; i < personList.size(); i++) {
             if (personList.get(i).id == personId) {
                 personList.remove(i);
                 System.out.println("Successfully deleted ID " + personId);

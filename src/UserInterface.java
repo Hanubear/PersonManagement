@@ -54,7 +54,6 @@ public class UserInterface {
                         case "3" -> {
                             //update PersonCSV
                             fileWriter.exportPersons(dataManagement.personList);
-                            userInteraction.printAnnoyingLoadingBar();
                         }
                         case "4" -> {
                             return;
