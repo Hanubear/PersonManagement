@@ -46,9 +46,14 @@ public class DataManagement {
     }
 
     public void deletePerson(int personId) {
-        for (int i = 1; i < personList.size()-1; i++) {
-            if (personList.get(i).id == personId) personList.remove(i);
+        for (int i = 1; i < personList.size() - 1; i++) {
+            if (personList.get(i).id == personId) {
+                personList.remove(i);
+                System.out.println("Successfully deleted ID " + personId);
+                return;
+            }
         }
+        throw new IdNotFoundException();
     }
 
     // ~~ PERSONMANAGEMENT ~~ PERSONMANAGEMENT ~~ PERSONMANAGEMENT ~~ PERSONMANAGEMENT
@@ -91,7 +96,7 @@ public class DataManagement {
         addressHashMap.put(address.streetId, address);
     }
 
-    public int createNewAddress(){
+    public int createNewAddress() {
         Address address = new Address();
         String input = "";
 
@@ -113,7 +118,7 @@ public class DataManagement {
 
     public void deleteAddress(int addressId) {
         for (int i = 1; i <= addressHashMap.size(); i++) {
-            if (addressHashMap.get(i).streetId == addressId) personList.remove(i);
+            if (addressHashMap.get(i).streetId == addressId) addressHashMap.remove(i);
         }
     }
 

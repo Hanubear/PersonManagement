@@ -6,10 +6,10 @@ public class UserInterface {
         UserInteraction userInteraction = new UserInteraction(dataManagement);
         FileWriter fileWriter = new FileWriter();
         boolean run = true;
-        String select;
 
 //        userInteraction.printAnnoyingLoadingBar();
         while (run) {
+            String select;
             userInteraction.printMainMenu();
             select = userInteraction.getMenuSelect();
             switch (select) { // ~~~MAIN MENU~~~
@@ -20,14 +20,36 @@ public class UserInterface {
                         case "1" -> {
                             //where to
                             dataManagement.printPersonManagementList();
-                            int selectID = userInteraction.getIdSelect();
-                            //add new Person
-                            String[] personData = userInteraction.scannerPersonData();
-                            dataManagement.createPerson(personData, selectID);
+                            int selectID;
+                            boolean success = false;
+                            do {
+                                try {
+                                    selectID = userInteraction.getIdSelect();
+                                    if (!dataManagement.personManagementHashMap.containsKey(selectID))
+                                        throw new IdNotFoundException();
+                                    //add new Person
+                                    String[] personData = userInteraction.scannerPersonData();
+                                    dataManagement.createPerson(personData, selectID);
+                                    success = true;
+                                } catch (IdNotFoundException e) {
+                                    e.printStackTrace();
+                                    System.out.println("List not found");
+                                }
+                            } while (!success);
                         }
                         case "2" -> {
                             //delete Person
-                            dataManagement.deletePerson(userInteraction.getIdSelect());
+                            boolean success = false;
+                            do {
+                                try {
+                                    System.out.println("ID: ");
+                                    dataManagement.deletePerson(userInteraction.getIdSelect());
+                                    success = true;
+                                } catch (IdNotFoundException e) {
+                                    e.printStackTrace();
+                                    System.out.println("Person not in List");
+                                }
+                            } while (!success);
                         }
                         case "3" -> {
                             //update PersonCSV
@@ -57,6 +79,7 @@ public class UserInterface {
                         }
                         case "2" -> {
                             //delete Address
+                            System.out.println("ID: ");
                             dataManagement.deleteAddress(userInteraction.getIdSelect());
                         }
                         case "3" -> {
@@ -82,10 +105,12 @@ public class UserInterface {
                     switch (select) {
                         case "1" -> {
                             //add new PersonManagement
+                            System.out.println("Name: ");
                             dataManagement.createPersonManagement(userInteraction.getMenuSelect());
                         }
                         case "2" -> {
                             //delete PersonManagement
+                            System.out.println("ID: ");
                             dataManagement.deletePersonManagement(userInteraction.getIdSelect());
                         }
                         case "3" -> {

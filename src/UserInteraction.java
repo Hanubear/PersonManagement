@@ -8,6 +8,7 @@ public class UserInteraction implements DateMatcher {
     private DataManagement dataManagement;
 
     private static final String NAME_REGEX = "^\\p{L}+([\\p{L}\\p{M}'\\- ]*\\p{L})?$";
+    private static final String NUMBER_REGEX = "^[0-9]+$";
     private static final Pattern DATE_PATTERN = Pattern.compile(
             "^((2000|2400|2800|(19|2[0-9])(0[48]|[2468][048]|[13579][26]))-02-29)$"
                     + "|^(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))$"
