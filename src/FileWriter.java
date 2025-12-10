@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 public class FileWriter {
     private String data;
 
-    public void exportAddresses(HashMap<Integer,Address>hashMap) {
+    public void exportAddresses(HashMap<Integer, Address> hashMap) {
         try {
             java.io.FileWriter file = new java.io.FileWriter("data/testAddresses.csv");
             BufferedWriter output = new BufferedWriter(file);
@@ -15,14 +15,14 @@ public class FileWriter {
             //"id","street","zip","city"
             output.write("\"id\",\"street\",\"zip\",\"city\"");
             output.newLine();
-            for (int i = 1; i <= hashMap.size(); i++) {
+
+            for (Address address : hashMap.values()) {
                 StringJoiner sj = new StringJoiner("\",\"", "\"", "\"");
                 data = "";
-                sj.add(String.valueOf(hashMap.get(i).streetId));
-                sj.add(hashMap.get(i).street);
-                sj.add(hashMap.get(i).zip);
-                sj.add(hashMap.get(i).city);
-
+                sj.add(String.valueOf(address.streetId));
+                sj.add(address.street);
+                sj.add(address.zip);
+                sj.add(address.city);
                 data = String.valueOf(sj);
                 output.write(data);
                 output.newLine();
@@ -34,7 +34,7 @@ public class FileWriter {
         }
     }
 
-    public void exportPersonManagements(HashMap<Integer,PersonManagement> hashMap) {
+    public void exportPersonManagements(HashMap<Integer, PersonManagement> hashMap) {
         try {
             java.io.FileWriter file = new java.io.FileWriter("data/testPersonManagements.csv");
             BufferedWriter output = new BufferedWriter(file);
@@ -42,11 +42,11 @@ public class FileWriter {
             //"id","name"
             output.write("\"id\",\"name\"");
             output.newLine();
-            for (int i = 1; i <= hashMap.size(); i++) {
+            for (PersonManagement personManagement : hashMap.values()) {
                 StringJoiner sj = new StringJoiner("\",\"", "\"", "\"");
                 data = "";
-                sj.add(String.valueOf(hashMap.get(i).id));
-                sj.add(hashMap.get(i).name);
+                sj.add(String.valueOf(personManagement.id));
+                sj.add(personManagement.name);
 
                 data = String.valueOf(sj);
                 output.write(data);

@@ -73,7 +73,7 @@ public class DataManagement {
 
     public void deletePersonManagement(int pmId) {
         for (int i = 1; i <= personManagementHashMap.size(); i++) {
-            if (personManagementHashMap.get(i).id == pmId) personList.remove(i);
+            if (personManagementHashMap.get(i).id == pmId) personManagementHashMap.remove(i);
         }
     }
 
