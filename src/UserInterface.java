@@ -57,7 +57,7 @@ public class UserInterface {
                             userInteraction.printAnnoyingLoadingBar();
                         }
                         case "4" -> {
-                            return;
+
                         }
                         case ":q!" -> {
                             //close
@@ -88,7 +88,7 @@ public class UserInterface {
                         }
                         case "4" -> {
                             //Back
-                            return;
+
                         }
                         case ":q!" -> {
                             //close
@@ -119,7 +119,7 @@ public class UserInterface {
                         }
                         case "4" -> {
                             //Back
-                            return;
+
                         }
                         case ":q!" -> {
                             //close
